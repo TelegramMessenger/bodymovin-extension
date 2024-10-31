@@ -1,0 +1,55 @@
+import cv2
+
+import os
+
+
+
+# Path to the uploaded video file
+
+video_path = '/mnt/data/lv_0_20241031233725.mp4'
+
+output_dir = '/mnt/data/frames/'
+
+
+
+# Ensure the output directory exists
+
+os.makedirs(output_dir, exist_ok=True)
+
+
+
+# Capture video frames
+
+cap = cv2.VideoCapture(video_path)
+
+frame_count = 0
+
+saved_frames = []
+
+
+
+# Extract frames from the video
+
+while cap.isOpened():
+
+    ret, frame = cap.read()
+
+    if not ret:
+
+        break
+
+    frame_file = os.path.join(output_dir, f'frame_{frame_count:04d}.png')
+
+    cv2.imwrite(frame_file, frame)
+
+    saved_frames.append(frame_file)
+
+    frame_count += 1
+
+
+
+cap.release()
+
+
+
+saved_frames[:5]  # Display first few saved frame paths as a sample
