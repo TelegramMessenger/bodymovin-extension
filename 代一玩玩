@@ -1,0 +1,24 @@
+#用于电报贴纸的Bodymovin-输出电报动画贴纸的后效应扩展
+
+Bodymovin-TG旨在帮助您在**.TGS**电报动画贴纸平台支持的格式。
+
+###正在安装
+ 
+1.关闭After Effects(如果已打开)
+2.安装[ZXP安装程序][ZXP_installer] 
+3.下载最新版本的[bodymovin-tg][bodymovin_tg](*bodymovin-tg.zxp*)
+4.打开ZXP安装程序并将bodymovin-tg扩展拖到ZXP安装程序窗口中
+5.打开After Effects。  
+**Windows：**转到“编辑”>“首选项”>“脚本和表达式”>，并选中“允许脚本写入文件和访问网络”  
+**Mac：**转到“Adobe After Effects”>“首选项”>“脚本和表达式”>，选中“允许脚本编写文件和访问网络”
+6.在“窗口>扩展”菜单下，您应该看到**Bodymovin电报贴纸**。现在你可以走了！
+
+有关创建和导出Lottie动画的详细信息，请参阅[本指南][ae_guide].
+
+有关Telegram动画贴纸的详细信息，请参阅[此页面][动画贴纸(_Stickers)].
+
+[//]: # (链接)
+[ZXP_installer]: https://zxpinstaller.com
+[bodymovin_tg]: https://github.com/TelegramMessenger/bodymovin-extension/releases
+[ae_guide]: http://airbnb.io/lottie/#/后遗症？ID=创建lottie动画
+[动画贴纸(_Stickers)]: https://core.telegram.org/animated_stickers
