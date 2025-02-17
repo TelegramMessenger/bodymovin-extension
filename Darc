@@ -1,0 +1,9 @@
+from lottie.exporters.tgs import export_tgs
+from lottie.parsers import parse_lottie
+
+# Load the JSON file
+with open("your_file.json", "r") as f:
+    animation = parse_lottie(f.read())
+
+# Export to TGS format
+export_tgs(animation, "output.tgs")
