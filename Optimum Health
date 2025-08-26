@@ -1,0 +1,75 @@
+/*
+Телеграм-пак реакций «Здоровье» — код и ассеты
+================================================
+Добавлены новые реакции:
+- ProteinShake (протеиновый шейкер)
+- Strength (силовой спорт — штанга)
+- WeightLoss (похудение — силуэт с уменьшающимся кругом)
+- Nutrition (правильное питание — тарелка с ложкой и вилкой)
+
+Цветовая схема перекрашена в оттенки морской волны (teal/turquoise).
+*/
+
+import React from "react";
+import { Player } from "lottie-react";
+
+// ====== УТИЛИТЫ ======
+const baseMeta = { v: "5.7.6", fr: 30, ip: 0, op: 90, w: 512, h: 512, nm: "", ddd: 0 };
+const fill = (r, g, b, a = 1) => ({ a: 0, k: [r/255, g/255, b/255, a], ix: 4 });
+const teal = fill(0, 191, 165, 1);
+const white = fill(255,255,255,1);
+
+const ellipse = ({name, rx=120, ry=120, cx=256, cy=256}) => ({ ty:"el", nm:name, p:{a:0,k:{x:cx,y:cy}}, s:{a:0,k:{x:rx*2,y:ry*2}} });
+const group = (name, items) => ({ ty:"gr", nm:name, it: items });
+const fillStyle = (name, color) => ({ ty:"fl", nm:name, c: color, o:{a:0,k:100} });
+const strokeStyle = (name, color, w=16, cap=2) => ({ ty:"st", nm:name, c: color, o:{a:0,k:100}, w:{a:0,k:w}, lc:cap, lj:1 });
+const transform = ({s=100, r=0, x=0,y=0}) => ({ ty:"tr", p:{a:0,k:[x,y]}, a:{a:0,k:[0,0]}, s:{a:0,k:[s,s]}, r:{a:0,k:r}, o:{a:0,k:100}, sk:{a:0,k:0}, sa:{a:0,k:0} });
+const animScalePulse = (kfs) => ({ a:1, k: kfs.map(([t,s])=>({t: t, s:[s,s,100]})), ix:6 });
+
+// ====== СТАРЫЕ РЕАКЦИИ (перекрашены) ======
+const HeartBeat = { ...baseMeta, nm:"HeartBeat", layers:[{ty:4,nm:"circle",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]},s:animScalePulse([[0,80],[30,100],[60,80],[90,80]])},shapes:[group("bg",[ellipse({name:"c",rx:200,ry:200,cx:0,cy:0}),fillStyle("fill",teal),transform({})])]}]};
+
+const Hydrate = { ...baseMeta, nm:"Hydrate", layers:[{ty:4,nm:"drop",ks:{o:{a:0,k:100},p:{a:1,k:[{t:0,s:[256,260,0]},{t:20,s:[256,180,0]},{t:40,s:[256,260,0]},{t:90,s:[256,260,0]}]}},shapes:[group("drop",[ellipse({name:"body",rx:130,ry:170,cx:0,cy:0}),fillStyle("fill",teal),transform({})])]}]};
+
+const Dumbbell = { ...baseMeta, nm:"Dumbbell", layers:[{ty:4,nm:"bar",ks:{o:{a:0,k:100},r:{a:1,k:[{t:0,s:0},{t:45,s:3},{t:90,s:0}]},p:{a:0,k:[256,256,0]}},shapes:[group("rod",[{ty:"rc",nm:"rod",p:{a:0,k:[0,0]},s:{a:0,k:[280,28]},r:{a:0,k:8}},fillStyle("fill",teal),transform({})]),group("plateL",[{ty:"rc",nm:"pl",p:{a:0,k:[-160,0]},s:{a:0,k:[46,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})]),group("plateR",[{ty:"rc",nm:"pr",p:{a:0,k:[160,0]},s:{a:0,k:[46,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})])]}]};
+
+const Apple = { ...baseMeta, nm:"Apple", layers:[{ty:4,nm:"apple",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]},s:animScalePulse([[0,90],[30,100],[60,90],[90,90]])},shapes:[group("body",[ellipse({name:"a",rx:150,ry:140,cx:0,cy:20}),fillStyle("fill",teal),transform({})])]}]};
+
+const Medal = { ...baseMeta, nm:"Medal", layers:[{ty:4,nm:"medal",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]}},shapes:[group("circle",[ellipse({name:"disc",rx:150,ry:150,cx:0,cy:0}),fillStyle("fill",teal),transform({})])]}]};
+
+const CrossGlow = { ...baseMeta, nm:"CrossGlow", layers:[{ty:4,nm:"cross",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]}},shapes:[group("cross",[{ty:"rc",nm:"vbar",p:{a:0,k:[0,0]},s:{a:0,k:[100,300]},r:{a:0,k:16}},{ty:"rc",nm:"hbar",p:{a:0,k:[0,0]},s:{a:0,k:[300,100]},r:{a:0,k:16}},fillStyle("fill",teal),transform({})])]}]};
+
+const Yoga = { ...baseMeta, nm:"Yoga", layers:[{ty:4,nm:"petals",ks:{o:{a:0,k:100},r:{a:1,k:[{t:0,s:0},{t:90,s:360}]},p:{a:0,k:[256,256,0]}},shapes:[group("p1",[ellipse({name:"p1",rx:40,ry:140,cx:0,cy:-120}),fillStyle("fill",teal),transform({})]),group("p2",[ellipse({name:"p2",rx:40,ry:140,cx:104,cy:60}),fillStyle("fill",teal),transform({})]),group("p3",[ellipse({name:"p3",rx:40,ry:140,cx:-104,cy:60}),fillStyle("fill",teal),transform({})])]}]};
+
+const ShieldOK = { ...baseMeta, nm:"ShieldOK", layers:[{ty:4,nm:"shield",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]}},shapes:[group("body",[{ty:"rc",nm:"plate",p:{a:0,k:[0,0]},s:{a:0,k:[280,340]},r:{a:0,k:60}},fillStyle("fill",teal),transform({})]),group("check",[{ty:"sh",nm:"check",ks:{a:0,k:{i:[[0,0],[0,0],[0,0]],o:[[0,0],[0,0],[0,0]],v:[[-60,0],[-10,60],[80,-60]],c:false}}},strokeStyle("stroke",white,28,2),transform({})])]}]};
+
+// ====== НОВЫЕ РЕАКЦИИ ======
+const ProteinShake = { ...baseMeta, nm:"ProteinShake", layers:[{ty:4,nm:"shaker",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]},s:animScalePulse([[0,95],[30,105],[60,95],[90,95]])},shapes:[group("cup",[{ty:"rc",nm:"cup",p:{a:0,k:[0,20]},s:{a:0,k:[140,220]},r:{a:0,k:24}},fillStyle("fill",teal),transform({})]),group("lid",[{ty:"rc",nm:"lid",p:{a:0,k:[0,-110]},s:{a:0,k:[160,40]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})])]}]};
+
+const Strength = { ...baseMeta, nm:"Strength", layers:[{ty:4,nm:"barbell",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]},r:{a:1,k:[{t:0,s:-5},{t:45,s:5},{t:90,s:-5}]}},shapes:[group("bar",[{ty:"rc",nm:"rod",p:{a:0,k:[0,0]},s:{a:0,k:[280,28]},r:{a:0,k:8}},fillStyle("fill",teal),transform({})]),group("plateL",[{ty:"rc",nm:"pl",p:{a:0,k:[-160,0]},s:{a:0,k:[60,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})]),group("plateR",[{ty:"rc",nm:"pr",p:{a:0,k:[160,0]},s:{a:0,k:[60,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})])]}]};
+
+const WeightLoss = { ...baseMeta, nm:"WeightLoss", layers:[{ty:4,nm:"circle",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]},s:animScalePulse([[0,110],[45,80],[90,110]])},shapes:[group("outline",[ellipse({name:"c",rx:200,ry:200,cx:0,cy:0}),strokeStyle("stroke",teal,28,2),transform({})])]}]};
+
+const Nutrition = { ...baseMeta, nm:"Nutrition", layers:[{ty:4,nm:"plate",ks:{o:{a:0,k:100},p:{a:0,k:[256,256,0]}},shapes:[group("dish",[ellipse({name:"dish",rx:200,ry:200,cx:0,cy:0}),strokeStyle("stroke",teal,28,2),transform({})]),group("spoon",[{ty:"rc",nm:"spoon",p:{a:0,k:[-120,0]},s:{a:0,k:[24,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})]),group("fork",[{ty:"rc",nm:"fork",p:{a:0,k:[120,0]},s:{a:0,k:[24,160]},r:{a:0,k:12}},fillStyle("fill",teal),transform({})])]}]};
+
+// ====== ЭКСПОРТ ======
+export const HEALTH_REACTIONS = { HeartBeat, Hydrate, Dumbbell, Apple, Medal, CrossGlow, Yoga, ShieldOK, ProteinShake, Strength, WeightLoss, Nutrition };
+
+export default function App(){
+  const items = Object.entries(HEALTH_REACTIONS);
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 p-6">
+      <h1 className="text-2xl font-bold mb-4">Пак реакций «Здоровье» (морская волна)</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {items.map(([name, data]) => (
+          <div key={name} className="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+            <div className="w-48 h-48">
+              <Player animationData={data} autoplay loop />
+            </div>
+            <div className="mt-3 font-medium">{name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
